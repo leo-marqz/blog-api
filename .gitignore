@@ -1,0 +1,37 @@
+# Dependencias
+/node_modules
+
+# Archivos de build y transpilación (salidas de TypeScript)
+# Esto asume que tu carpeta de salida es 'dist' o 'build' (común en tsconfig.json)
+/dist
+/build
+/out
+
+# Archivos de caché
+.npm
+.yarn
+.eslintcache
+.prettiercache
+/tmp
+
+# Archivos de configuración de IDE y OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs y bases de datos de desarrollo
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/logs
+/database.sqlite
+/data/*.db
+
+# Entornos y secretos (¡CRUCIALES!)
+.env
+.env.*
+config/local.json
+secrets.json
