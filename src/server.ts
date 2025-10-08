@@ -46,7 +46,7 @@ const corsOptions: CorsOptions = {
             config.WHITELIST_ORIGINS.includes(origin) 
         ){
             callback(null, true);
-            logger.info(`CORS Ok: ${origin} is allowed by CORS`);
+            logger.info(`CORS Ok: ${origin ? origin : 'unknown origin'} is allowed by CORS`);
         }else{
             // Reject requests from non-whitelisted origins
             callback( new Error(`CORS Error: ${origin} is not allowed by CORS`), false );

@@ -15,7 +15,7 @@ dotenv.config();
 const config = {
     PORT: process.env.PORT || 3000,
     NODE_ENV: process.env.NODE_ENV || 'production',
-    WHITELIST_ORIGINS: ['https://dosc.blog-apileomarqz.com'],
+    WHITELIST_ORIGINS: ['https://dosc.blog-apileomarqz.com', 'http://localhost'],
     MONGO_URI: process.env.MONGO_URI,
     LOG_LEVEL: process.env.LOG_LEVEL || 'info',
 }
