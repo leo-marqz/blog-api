@@ -18,6 +18,7 @@ import helmet from 'helmet';
  */ 
 import config from './config';
 import limiter from './lib/express_rate_limit';
+import { connectToDatabase, disconnectFromDatabase } from './lib/mongoose';
 
 /**
  * Router
@@ -93,12 +94,6 @@ app.use( helmet() );
 app.use( limiter );
 
 /**
- * Apply main router - v1
- */
-app.use('/api/v1', v1Router);
-// app.use('/api/v2', v2Router);
-
-/**
  * Immediately Invoked Async Function Expression (IIFE) to start the server.
  * 
  * - Tries to connect to the datase before initializing the server.
@@ -108,6 +103,11 @@ app.use('/api/v1', v1Router);
  */
 (async ()=>{
     try{
+
+        // Connect to the database before starting the server
+        await connectToDatabase();
+
+        app.use('/api/v1', v1Router);
 
         app.listen(config.PORT, ()=>{
             console.log(`Server is running: http://localhost:${config.PORT}`);
@@ -134,6 +134,7 @@ app.use('/api/v1', v1Router);
 
 const handleServerShutdown = async ()=>{
     try{
+        await disconnectFromDatabase();
         console.log(`[SIGTERM] Shutting down server...`);
         process.exit(0);
     }catch(error){
