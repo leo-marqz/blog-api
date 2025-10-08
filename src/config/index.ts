@@ -17,6 +17,7 @@ const config = {
     NODE_ENV: process.env.NODE_ENV || 'production',
     WHITELIST_ORIGINS: ['https://dosc.blog-apileomarqz.com'],
     MONGO_URI: process.env.MONGO_URI,
+    LOG_LEVEL: process.env.LOG_LEVEL || 'info',
 }
 
 export default config;
