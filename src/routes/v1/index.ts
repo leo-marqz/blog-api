@@ -4,12 +4,21 @@
  * @license Apache-2.0
  */
 
-// Node Modules
+/**
+ * Node Modules
+ */
 import { Router } from 'express';
 
 const router = Router();
 
-//Router
+/**
+ * Routes
+ */
+import authRouter from '../v1/auth';
+
+/**
+ * Root Route
+ */
 router.get('', (req, res)=>{
     res.json({
         message: 'API is live',
@@ -18,7 +27,9 @@ router.get('', (req, res)=>{
         docs: 'https://docs.blog-api.leomarqz.com',
         timestamp: new Date().toISOString()
     })
-})
+});
+
+router.use('/auth', authRouter);
 
 export default router;
 
