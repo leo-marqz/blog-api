@@ -9,6 +9,7 @@
  */
 import { logger } from '../../../lib/winston';
 import config from '../../../config';
+import { generateUsername } from '../../../utils';
 
 
 /**
@@ -32,8 +33,24 @@ const register = async (req: Request, res: Response): Promise<void> => {
     console.table({ email, password, role });
 
     try{
+        const username = await generateUsername();
+        const newUser = await User.create({
+            username,
+            email,
+            password,
+            role
+        });
+
+        // Generate access token and refresh token for the new user
+
+
         res.status(201).json({
-            message: 'New user created!'
+            message: 'New user created!',
+            user: {
+                username: newUser.username,
+                email: newUser.email,
+                role: newUser.role
+            }
         });
     }catch(error){
         res.status(500).json({
