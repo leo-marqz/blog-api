@@ -113,7 +113,7 @@ app.use( limiter );
         app.listen(config.PORT, ()=>{
             logger.info(`Server is running: http://localhost:${config.PORT}`);
         });
-        
+         
     }catch(error){
         logger.error(`failed to start the server`, error);
 
