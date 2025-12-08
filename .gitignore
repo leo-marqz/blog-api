@@ -32,6 +32,6 @@ yarn-error.log*
 
 # Entornos y secretos (¡CRUCIALES!)
 .env
-.env.*
+# .env.*
 config/local.json
 secrets.json

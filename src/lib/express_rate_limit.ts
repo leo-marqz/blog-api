@@ -4,11 +4,14 @@
  * @license Apache-2.0
  */
 
-// Node Modules
-
+/**
+ * Node Modules
+ */
 import { rateLimit } from 'express-rate-limit';
 
-// Confgiure rate limiting middleware to prevent abuse 
+/**
+ * Confgiure rate limiting middleware to prevent abuse
+ */ 
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1-minute time window for request limiting
     max: 60, // Allow a maximun of 60 reequests per window per IP
