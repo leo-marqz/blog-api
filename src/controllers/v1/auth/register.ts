@@ -17,6 +17,8 @@ import { generateUsername } from '../../../utils';
  * Models
  */
 import User from '../../../models/user';
+import Token from '../../../models/token';
+
 
 /**
  * Types
@@ -45,7 +47,11 @@ const register = async (req: Request, res: Response): Promise<void> => {
         const refreshToken = generateRefreshToken(newUser._id);
 
         // Save the refresh token in the database (optional).
-        
+        await Token.create( { token: refreshToken, userId: newUser._id } );
+        logger.info('Refresh token saved successfully for user', {
+            userId: newUser._id,
+            token: refreshToken
+        });
 
         // Set the refresh token in an HTTP-only cookie
         res.cookie('refreshToken', refreshToken, {

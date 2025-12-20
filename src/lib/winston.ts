@@ -28,8 +28,12 @@ if(config.NODE_ENV !== 'production'){
             timestamp({ format: 'YYYY-MM-DD HH:mm:ss A' }), // Add timestamp to logs
             align(),
             printf(({timestamp, level, message, ...meta})=>{
-                const metaStr = Object.keys(meta).length ? JSON.stringify(meta, null, 2) : '';
-                return `${timestamp} [${level.toLocaleUpperCase()}]: ${message} ${metaStr}`;
+
+                const metaStr = Object.keys(meta).length 
+                                    ? `\n${JSON.stringify(meta, null, 2)}` 
+                                    : '';
+
+                return `${timestamp} [${level}]: ${message} ${metaStr}`;
             })
         )
     }))

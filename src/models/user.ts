@@ -14,7 +14,7 @@ export interface IUser {
     username: string;
     email: string;
     password: string;
-    role: string;
+    role: 'user' | 'admin';
     firstName?: string;
     lastName?: string;
     socialLinks?: {
@@ -49,6 +49,7 @@ const userSchema = new Schema<IUser>({
     password: {
         type: String,
         required: [true, 'Password is required'],
+        minLength: [8, 'Password must be at least 8 characters'],
         select: false,
     },
     role: {

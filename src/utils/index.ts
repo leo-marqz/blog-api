@@ -10,7 +10,7 @@
 
 export const generateUsername = (): string => {
     const usernamePrefix = 'user-';
-    const randomString = Math.random().toString(36).substring(2);
-    const username = usernamePrefix + randomString;
+    const randomChars = Math.random().toString(36).substring(2);
+    const username = usernamePrefix + randomChars;
     return username;
 }
