@@ -52,7 +52,7 @@ const authenticate = (req: Request, res: Response, next: NextFunction)=>{
         // Attach the userId to the request object for later use 
         // (Custom) userId is defined in src/@types/express/index.ts
         // (tsconfig.json paths updated to include src/@types)
-        req.userId = jwtPayload.userId;
+        req.userId = jwtPayload.userId; //access all endpoints
 
         // Proceed to the next middleware or route handler
         return next();
