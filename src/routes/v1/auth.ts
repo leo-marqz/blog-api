@@ -9,7 +9,7 @@
  */
 
 import { Router } from "express";
-import { body } from "express-validator";
+import { body, cookie } from "express-validator";
 import bcrypt from 'bcrypt';
 
 /**
@@ -95,6 +95,13 @@ router.post(
 );
 
 // api/v1/auth/refresh-token
-router.post('/refresh-token', refreshToken);
+router.post(
+    '/refresh-token', 
+    cookie('refreshToken')
+        .notEmpty().withMessage('Refresh token is required')
+        .isJWT().withMessage('Invalid refresh token'), 
+    validationError, //middleware
+    refreshToken
+);
 
 export default router;
