@@ -18,11 +18,13 @@ import bcrypt from 'bcrypt';
 import register from "../../controllers/v1/auth/register";
 import login from "../../controllers/v1/auth/login";
 import refreshToken from "../../controllers/v1/auth/refreshToken";
+import logout from "../../controllers/v1/auth/logout";
 
 /**
  * Middlewares
  */
 import validationError from '../../middlewares/validationError';
+import authenticate from '../../middlewares/authenticate';
 
 /**
  * Models
@@ -102,6 +104,13 @@ router.post(
         .isJWT().withMessage('Invalid refresh token'), 
     validationError, //middleware
     refreshToken
+);
+
+// .api/v1/auth/logout
+router.post(
+    '/logout', 
+    authenticate,
+    logout
 );
 
 export default router;

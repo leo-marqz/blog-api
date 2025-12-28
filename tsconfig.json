@@ -12,9 +12,10 @@
         "skipLibCheck": true,
         // "paths": {
         //     "@/*": [  
-        //         "src/*"
-        //     ]
-        // }
+        //             "src/*"
+        //         ]
+        // },
+        "typeRoots": [ "./src/@types" ]
     },
     "include": [ "src/**/*.ts" ],
     "exclude": [ "node_modules" ]
