@@ -66,8 +66,7 @@ const register = async (req: Request, res: Response): Promise<void> => {
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: config.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: 'strict', // Adjust based on your requirements
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+            sameSite: 'strict' // Adjust based on your requirements
         });
 
         res.status(201).json({
